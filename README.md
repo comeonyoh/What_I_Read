@@ -3,6 +3,7 @@ The book list what I read since 2017
 
 ### 2021
 1. [규칙없음](http://www.yes24.com/Product/Goods/92275597?OzSrank=1)
+2. [바이러스 X](http://www.yes24.com/Product/Goods/94164123?OzSrank=1)
 
 ### 2020
 1. 아주 작은 습관의 힘

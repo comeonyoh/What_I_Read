@@ -5,6 +5,7 @@ The book list what I read since 2017
 1. [서울 자가에 대기업 다니는 김 부장 이야기 1 김 부장 편](http://www.yes24.com/Product/Goods/103286195)
 2. [서울 자가에 대기업 다니는 김 부장 이야기 2 정 대리 · 권 사원 편](http://www.yes24.com/Product/Goods/103286203)
 3. [서울 자가에 대기업 다니는 김 부장 이야기 3 송 과장 편](http://www.yes24.com/Product/Goods/105000751)
+4. [때로는 행복 대신 불행을 택하기도 한다](http://www.yes24.com/Product/Goods/110838178)
 
 ### 2021
 1. [규칙없음](http://www.yes24.com/Product/Goods/92275597?OzSrank=1)

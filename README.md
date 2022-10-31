@@ -7,6 +7,7 @@ The book list what I read since 2017
 3. [서울 자가에 대기업 다니는 김 부장 이야기 3 송 과장 편](http://www.yes24.com/Product/Goods/105000751)
 4. [때로는 행복 대신 불행을 택하기도 한다](http://www.yes24.com/Product/Goods/110838178)
 5. [주식회사 르브론 제임스 억만장자 운동선수의 탄생](http://www.yes24.com/Product/Goods/112014939)
+6. [행복을 파는 브랜드, 오롤리데이](http://www.yes24.com/Product/Goods/108618038)
 
 
 ### 2021

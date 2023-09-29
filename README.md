@@ -3,6 +3,7 @@ The book list what I read since 2017
 
 ### 2023
 1. [역전의 명수 난공불락의 1위를 뒤집은 창조적 추격자들의 비밀](https://www.yes24.com/Product/Goods/56834651)
+2. [푸틴을 죽이는 완벽한 방법](https://www.yes24.com/Product/Goods/122319145)
 
 ### 2022
 1. [서울 자가에 대기업 다니는 김 부장 이야기 1 김 부장 편](http://www.yes24.com/Product/Goods/103286195)

@@ -3,6 +3,9 @@ The book list what I read since 2017
 
 ### 2024
 1. [유난한 도전. 경계를 부수는 사람들, 토스팀 이야기](https://www.yes24.com/Product/Goods/115007234)
+2. [클린 애자일](https://www.yes24.com/Product/Goods/95728889)
+3. [진짜 챗GPT 활용법](https://www.yes24.com/Product/Goods/122767542)
+4. [이처럼 사소한 것들](https://www.yes24.com/Product/Goods/123400303)
 
 ### 2023
 1. [역전의 명수 난공불락의 1위를 뒤집은 창조적 추격자들의 비밀](https://www.yes24.com/Product/Goods/56834651)

@@ -3,7 +3,7 @@ name: Daily Open PR Check
 on:
   schedule:
     # Schedule to run at 1 PM UTC, which is 10 PM KST.
-    - cron: '30 13 * * *'
+    - cron: '50 13 * * *'
 
 jobs:
   check_open_prs:
@@ -18,39 +18,13 @@ jobs:
           node-version: '14'
       
       - name: Install dependencies
-        run: |
-          npm install @octokit/rest
+        run: npm install @octokit/rest
 
-      
-      - name: Check for open PRs
+      - name: Check Open PRs
+        run: node script.js
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          const { Octokit } = require("@octokit/rest");
-          const octokit = new Octokit({ auth: process.env.SECRET_KEY });
-          
-          async function checkOpenPRs() {
-            const { data } = await octokit.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open'
-            });
 
-            if (data.length > 0) {
-              const message = `There are currently ${data.length} open pull requests.`;
-              const curl = `curl -X POST -H 'Content-type: application/json' --data '{"text":"${message}"}' ${process.env.SLACK_WEBHOOK_URL}`;
-              require('child_process').exec(curl, (error, stdout, stderr) => {
-                if (error) {
-                  console.error(`exec error: ${error}`);
-                  return;
-                }
-                console.log(`stdout: ${stdout}`);
-                console.log(`stderr: ${stderr}`);
-              });
-            }
-          }
-
-          checkOpenPRs();
       - name: Log Hello
         run: echo "say hello"

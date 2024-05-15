@@ -3,7 +3,7 @@ name: Daily Open PR Check
 on:
   schedule:
     # Schedule to run at 1 PM UTC, which is 10 PM KST.
-    - cron: '0 13 * * *'
+    - cron: '30 13 * * *'
 
 jobs:
   check_open_prs:
@@ -20,14 +20,15 @@ jobs:
       - name: Install dependencies
         run: |
           npm install @octokit/rest
+
       
       - name: Check for open PRs
         env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_KEY }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           const { Octokit } = require("@octokit/rest");
-          const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+          const octokit = new Octokit({ auth: process.env.SECRET_KEY });
           
           async function checkOpenPRs() {
             const { data } = await octokit.rest.pulls.list({
@@ -51,3 +52,5 @@ jobs:
           }
 
           checkOpenPRs();
+      - name: Log Hello
+        run: echo "say hello"

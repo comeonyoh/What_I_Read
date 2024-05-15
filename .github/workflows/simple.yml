@@ -1,34 +1,19 @@
-# This is a basic workflow to help you get started with Actions
+name: Slack Notification on PR
 
-name: PR Bot
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   pull_request:
-    branches: [ "main" ]
-    types: [opened, synchronize, labeled]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    types: [opened, reopened, closed]
 
 jobs:
-  comment_on_pr:
+  notify_slack:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Comment PR
-      uses: actions/github-script@v3
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          const issue_number = context.issue.number;
-          const message = 'Thank you for your pull request! We will review it as soon as possible.';
-          github.issues.createComment({
-            issue_number: issue_number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: message
-          });
+      - name: Send notification to Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          PR_ACTION="${{ github.event.action }}"
+          MESSAGE="A pull request has been *$PR_ACTION*: $PR_TITLE\n$PR_URL"
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"'"$MESSAGE"'"}' $SLACK_WEBHOOK_URL

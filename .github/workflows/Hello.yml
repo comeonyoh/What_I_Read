@@ -1,0 +1,13 @@
+name: Daily Hello Log
+
+on:
+  schedule:
+    # Schedule to run at 1:10 PM UTC, which is 10:10 PM KST.
+    - cron: '15 13 * * *'
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Hello
+        run: echo "say hello"

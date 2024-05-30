@@ -10,14 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v2
+        with:
+          ref: main
 
       - name: Extract branch name
         id: extract
         run: |
-          echo "Clean up for branch ${{ github.event.ref }}"
-
+          BRANCH_REF=${{ github.event.ref }}
+          VERSION_TAG=${BRANCH_REF#refs/heads/release/}
+          echo "Clean up for branch $BRANCH_REF"
+          echo "Extracted version: $VERSION_TAG"
+          echo "branch_name=$VERSION_TAG" >> $GITHUB_ENV
 
       - name: Create tag and push it
         run: |

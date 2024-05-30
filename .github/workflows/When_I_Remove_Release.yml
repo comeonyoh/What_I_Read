@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release on Branch Deletion
+
+on:
+  delete:
+    branches:
+      - release/*
+
+jobs:
+  tag_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up GitHub CLI
+        uses: cli/cli-action@v2
+        with:
+          version: latest
+
+      - name: Extract branch name
+        id: extract
+        run: |
+          BRANCH_REF=${GITHUB_REF##*/}
+          echo "::set-output name=branch_name::$BRANCH_REF"
+
+      - name: Create tag
+        id: create_tag
+        run: |
+          TAG_NAME=${{ steps.extract.outputs.branch_name }}
+          echo "::set-output name=tag::$TAG_NAME"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+
+      - name: Create GitHub Release
+        id: create_release
+        run: |
+          gh release create ${{ steps.create_tag.outputs.tag }} --generate-notes

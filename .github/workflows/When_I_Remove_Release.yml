@@ -20,6 +20,13 @@ jobs:
           echo "Removed branch name: $BRANCH_REF"
           echo "branch_name=$BRANCH_REF" >> $GITHUB_ENV
 
+      - name: Create tag and push it.
+        run: |
+          TAG_NAME=${{ env.branch_name }}
+          echo "TAG_NAME: $TAG_NAME"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+
       # - name: Create tag
       #   run: |
       #     TAG_NAME=${{ env.branch_name }}

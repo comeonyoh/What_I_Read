@@ -22,4 +22,4 @@ jobs:
           VERSION_TAG=${BRANCH_REF#refs/heads/release/}
           echo "Clean up for branch $BRANCH_REF"
           echo "Extracted version: $VERSION_TAG"
-          echo "branch_name=${VERSION_TAG#release/}" >> $GITHUB_ENV
+          echo "branch_name=$VERSION_TAG" >> $GITHUB_ENV

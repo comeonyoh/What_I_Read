@@ -19,7 +19,7 @@ jobs:
         id: extract
         run: |
           BRANCH_REF=${{ github.event.ref }}
-          VERSION_TAG=${BRANCH_REF#refs/heads/release/}
+          VERSION_TAG=${BRANCH_REF#release/}
           echo "Clean up for branch $BRANCH_REF"
           echo "Extracted version: $VERSION_TAG"
           echo "branch_name=$VERSION_TAG" >> $GITHUB_ENV

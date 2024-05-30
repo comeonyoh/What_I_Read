@@ -16,16 +16,8 @@ jobs:
       - name: Extract branch name
         id: extract
         run: |
-          BRANCH_REF=${GITHUB_REF##*/}
-          echo "Removed branch name: $BRANCH_REF"
-          if [[ "$BRANCH_REF" == release/* ]]; then
-            VERSION_TAG=${BRANCH_REF#release/}
-            echo "Tag to be created: $VERSION_TAG"
-            echo "branch_name=$VERSION_TAG" >> $GITHUB_ENV
-          else
-            echo "This is not a release branch."
-            exit 1
-          fi
+          echo "Clean up for branch ${{ github.event.ref }}"
+
 
       - name: Create tag and push it
         run: |

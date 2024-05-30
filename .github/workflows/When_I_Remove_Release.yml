@@ -22,28 +22,4 @@ jobs:
           VERSION_TAG=${BRANCH_REF#refs/heads/release/}
           echo "Clean up for branch $BRANCH_REF"
           echo "Extracted version: $VERSION_TAG"
-          echo "branch_name=$VERSION_TAG" >> $GITHUB_ENV
-
-      - name: Create tag and push it
-        run: |
-          TAG_NAME=${{ env.branch_name }}
-          echo "TAG_NAME: $TAG_NAME"
-          git tag $TAG_NAME
-          git push origin $TAG_NAME
-
-      # - name: Create GitHub Release
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       const tag = process.env.branch_name;
-      #       const response = await github.repos.createRelease({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         tag_name: tag,
-      #         name: tag,
-      #         body: '',
-      #         draft: false,
-      #         prerelease: false,
-      #         generate_release_notes: true
-      #       });
-      #       core.setOutput('release_url', response.data.html_url);
+          echo "branch_name=${VERSION_TAG#release/}" >> $GITHUB_ENV
